@@ -8,4 +8,6 @@ This problem is solved by simple Brute Force approch. It can be solve by backtra
         1. Then we do not need to compair the dates and we can do movies freely
    3. if 1st moive start and end in same month and 2nd movies start month is same but end month different :
         1. Here then condition if the second movie start after first movie then both can be done.
-      - 
+
+## screenshot
+![](images/output.png)
