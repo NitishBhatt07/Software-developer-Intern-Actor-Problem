@@ -1,6 +1,6 @@
 # Software-developer-Intern-Actor-Problem
 This problem is solved by simple Brute Force approch. It can be solve by backtracking and Recursion methods.
-## ]my basic approch to solve this problem :
+## My basic approch to solve this problem :
 1. Loop for compairing 1st moive with all movie then 2nd to all and so on :
    1. Both movies start and end date same :
         1. Then compair the date , both movie can do same time or not
