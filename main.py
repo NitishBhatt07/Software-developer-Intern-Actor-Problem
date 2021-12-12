@@ -1,3 +1,18 @@
+def get_indexed_dict(movie_info):
+    new = []
+    months = {'jan':1,'feb':2,'mar':3,'apr':4,'may':5,'jun':6}
+    for i in range(len(movie_info)):
+        
+        new.append({ 'movie_name': movie_info[i]['movie_name'],
+                    'start_date': movie_info[i]['start_date'],
+                    'start_month': int(months[movie_info[i]['start_date'].split()[1]]),
+                    'end_date': movie_info[i]['end_date']
+                   })
+    
+    # soting by month
+    newlist = sorted(new, key=lambda d: d['start_month'])
+    return newlist
+
 def ret_movie_list(movies):
     temp = {}
     new_movie_info = {}
@@ -134,12 +149,14 @@ def get_sequence(temp,new_movie_info):
     for movi in temp2[li[-1]]:
         main_seq.append(movi)
     
-    return main_seq,length+1
-
+    main_seq = set(main_seq)
+    return main_seq,len(main_seq)
 
 
 if __name__ == "__main__":
    
+
+    # Test Case 1
     movie_info = [ {'movie_name':'Bala',"start_date":'08 jan',"end_date":'28 jan'},
     {'movie_name':'Rock',"start_date":'20 jan',"end_date":'30 jan'},
     {'movie_name':'PolicyMaker',"start_date":'29 jan',"end_date":'16 feb'},
@@ -147,8 +164,27 @@ if __name__ == "__main__":
     {'movie_name':'Race',"start_date":'15 feb',"end_date":'28 feb'},
     ]
 
-    seq, money = ret_movie_list(movie_info)
-    print(seq)
-    print(money)
+    # test Case2
+    movie_info3 = [{'movie_name': 'Dhoom', 'start_date': '25 mar','end_date': '18 apr'},
+                {'movie_name': 'King', 'start_date': '29 apr', 'end_date': '10 jun'},
+               {'movie_name': 'Run', 'start_date': '09 may', 'end_date': '2 jun'},
+                {'movie_name': 'Bala', 'start_date': '08 jan','end_date': '28 jan'},
+                {'movie_name': 'Rock', 'start_date': '20 jan', 'end_date': '30 jan'},
+                {'movie_name': 'PolicyMaker', 'start_date': '29 jan', 'end_date': '16 feb'},
+                {'movie_name': 'Brave', 'start_date': '02 feb',  'end_date': '14 feb'},
+                {'movie_name': 'Race', 'start_date': '15 feb',  'end_date': '28 feb'},
+                ]
+
+    #test case 1
+    new_movie_info1 = get_indexed_dict(movie_info)
+    seq1, money1 = ret_movie_list(new_movie_info1)
+    print(f"Test Case 1:\nsequence: {seq1}\nmoney: {money1} crore")
+
+    #test case 2
+    new_movie_info2 = get_indexed_dict(movie_info3)
+    seq2, money2 = ret_movie_list(new_movie_info2)
+    print(f"Test Case 2:\nsequence: {seq2}\nmoney: {money2} crore")
+
+
     
     
